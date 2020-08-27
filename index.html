@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>WebAR Face Effect</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <script async src="https://apps.8thwall.com/xrweb?appKey=wgDImS9fwGeJIjYGNUnge6qxtEo7p0kSZqC0PpY9UtVxnOqsKm8MY5EYAJqpkwktRFfPBN"></script>
+        <script src="//cdn.8thwall.com/web/aframe/8frame-1.0.4.min.js"></script>
+        <script defer src="//cdn.8thwall.com/web/aframe/aframe-animation-component-5.1.2.min.js"></script>
+        <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
+        <script src="//cdn.8thwall.com/web/aframe/aframe-extras-4.2.0.min.js"></script>
+
+        <script src="app.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <a-scene
+            xrextras-almost-there
+            xrextras-loading
+            xrextras-runtime-error
+            renderer="maxCanvasWidth: 960; maxCanvasHeight: 960"
+            xrface="mirroredDisplay: true;  meshGeometry: eyes, face, mouth; cameraDirection: front; allowedDevices: any;">
+            <a-assets>
+                <a-asset-item id="head-occluder" src="./assets/Models/head-occluder.glb"></a-asset-item>
+                <a-asset-item id="glasses" src="./assets/Models/stereo-glasses.glb"></a-asset-item>
+            </a-assets>
+            <xrextras-resource id="tat-t" src="./assets/Textures/8-tat-hs9btnc2r9.png"></xrextras-resource>
+            <xrextras-resource id="alpha" src="./assets/Alpha/soft-eyes-mouth-qdi5sah8in.png"> </xrextras-resource>
+            <xrextras-basic-material id="tattoo" tex="#tat-t" alpha="#alpha" opacity="0.9"></xrextras-basic-material>
+            <xrextras-capture-button></xrextras-capture-button>
+            <xrextras-capture-preview></xrextras-capture-preview>
+            <a-camera position="0 1 2"></a-camera>
+
+            <xrextras-faceanchor>
+    
+                <a-entity gltf-model="#head-occluder" position="0 0 0.02" xrextras-hider-material></a-entity>
+                
+                <xrextras-face-mesh material-resource="#tattoo"></xrextras-face-mesh>
+                
+                <xrextras-face-attachment point="noseBridge">
+                    <a-entity gltf-model="#glasses" scale="1.1 1.1 1.1" position="0 0.05 0">
+                        <a-plane 
+                            position="0.25 -0.01 0"
+                            height="0.25" 
+                            width="0.4" 
+                            side="back" 
+                            depth-write="false"
+                            color="#7611B6"
+                            opacity="0.5"
+                            roughness="0.25"
+                        ></a-plane>
+                        <a-plane 
+                            position="-0.25 -0.01 0"
+                            height="0.25" width="0.4" 
+                            side="back" 
+                            depth-write="false"
+                            color="#FFC828"
+                            opacity="0.5"
+                            roughness="0.25"
+                        ></a-plane>
+                    </a-entity>
+                </xrextras-face-attachment>
+                
+              </xrextras-faceanchor>
+              
+              <a-light type="directional" target="#face" position="0 1.8 3" intensity="0.8"></a-light>
+              <a-light type="ambient" intensity="0.8"></a-light>
+        </a-scene>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>

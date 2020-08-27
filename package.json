@@ -1,0 +1,24 @@
+{
+  "name": "web-ar-faceeffect",
+  "version": "1.0.0",
+  "description": "Face effect Augmented Reality using 8thwall",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mazkaaa/web-ar-faceeffect.git"
+  },
+  "author": "mazkaaa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mazkaaa/web-ar-faceeffect/issues"
+  },
+  "homepage": "https://github.com/mazkaaa/web-ar-faceeffect#readme",
+  "devDependencies": {
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
+  }
+}
